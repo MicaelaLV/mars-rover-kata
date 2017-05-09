@@ -1,5 +1,5 @@
 var myRover = {
-  position: [0,0], 
+  position: [0,0],
   direction: 'N'
 };
 
