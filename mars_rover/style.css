@@ -1,16 +1,17 @@
-.grid {
-		border: 1px solid #ddd;
-		display: inline-block;
-		padding: 1px;
-	}
-	.row {
-		margin: 0;
-	}
-	.cell {
-		border: 1px solid #ddd;
-		width: 20px;
-		height: 20px;
-		display: inline-block;
-		margin: 1px;
-		vertical-align: top;
-	}
+@font-face {
+  font-family: 'glass';
+  src: url(fonts/glass.ttf);
+}
+
+body {
+  background: url(img/mars_ground.jpg)no-repeat center;
+  background-color: #000;
+}
+
+h1 {
+  font-family: 'glass', sans-serif;
+  color: #975542;
+  font-size: 72px;
+  text-align: center;
+  margin-top: 50px;
+}
