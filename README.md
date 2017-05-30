@@ -38,6 +38,8 @@ Furthermore, we need to make sure that the rover never goes off the grid but rat
 
 In your 10 x 10 grid, place some obstacles that the rover cannot cross or land on
 Implement obstacle detection. The rover should execute the given commands until it reaches an obstacle, then stop at the last possible position and report the obstacle.
-Extra hardcore super bonus==
+
+
+==Extra hardcore super bonus
 
 Our rover is lonely! We need to send another one that can roam on the same grid and execute the same commands. Make sure the rovers don’t bump into each other.
