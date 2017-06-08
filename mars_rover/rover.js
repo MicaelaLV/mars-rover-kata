@@ -8,18 +8,25 @@
    grid[1] = y;
  }
 */
+
+//===========Rover Touch Down========
+confirm("Houston, Challenger has successfully landed on Mars Ground, ready for commands");
+
+alert("Communicating Position ...");
+
+
 //===============Challenger Rover==================
 var marsChallenger = {
   position: [0, 0], //coordinates(x,y)
   direction: 'N',
 };
+alert("Challenger is in position " + marsChallenger.position[0] + "," + marsChallenger.position[1] + " and is facing " + marsChallenger.direction + " ." );
 
+
+//================Communicating Rover Position===========
 function roverPosition(rover) {
   console.log("Mars Challenger is in position " + marsChallenger.position[0] + "," + marsChallenger.position[1] + " and is facing " + marsChallenger.direction + " ." );
 }
-roverPosition(marsChallenger);
-
-
 
 //=================Creating Borders and Overlapping the Rover========
 function overLapMap(rover) {
@@ -38,7 +45,6 @@ function overLapMap(rover) {
           overLapY = 10;
     }
 }
-overLapMap(marsChallenger);
 
 //===================Starter code - Moving Forward====================
 function goForward(rover) {
@@ -57,7 +63,6 @@ function goForward(rover) {
       break;
   }
 }
-goForward(marsChallenger);
 
 //================Moving Backwards=====================
 function goBackwards(rover) {
@@ -76,7 +81,6 @@ function goBackwards(rover) {
       break;
   }
 }
-goBackwards(marsChallenger);
 
 //====================Turning Right=======================
 function turnRight(rover) {
@@ -95,7 +99,6 @@ function turnRight(rover) {
       break;
   }
 }
-turnRight(marsChallenger);
 
 //====================Turning Left=======================
 function turnLeft(rover) {
@@ -114,18 +117,19 @@ function turnLeft(rover) {
       break;
   }
 }
-turnLeft(marsChallenger);
 
 //==============Assigning functions to Commands========
 
 //Ask the user for moving commands
-var userInput = prompt("Move Rover with F (Forward), B (Backward), R (Right), L (Left)");
+confirm("Houston, request Challenger to move?");
+
+var userInput = prompt("Move Challenger with F (Forward), B (Backward), R (Right), L (Left)");
 
 //Transform all the text inputted into uppercases
 var checkedText = userInput.toUpperCase();
 
+//Check all text inputted for movement commands
 var commands = [];
-
 for (var i = 0; i < checkedText.length; i++) {
   commands = checkedText[i];
 
@@ -143,6 +147,8 @@ for (var i = 0; i < checkedText.length; i++) {
   }  else if (commands  === 'L'){
         turnLeft(marsChallenger);
         overLapMap(marsChallenger);
+ } else {
+   alert("Houston, one of your request is not supported. I'll apply all supported commands");
  }
 }
 roverPosition(marsChallenger);
