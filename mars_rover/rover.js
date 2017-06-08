@@ -22,13 +22,28 @@ for (var x = 0; x <= 10; x++) {
 //=============Obstacles================
 var alienContact = [1, 3];
 var rockWall = [5, 5];
-var alienNest = [9, 8];
+var alienNest = [8, 9];
 var cliff = [3, 8];
 
 //================Communicating Rover Position===========
 function printPosition(rover) {
   console.log("Mars Challenger is in position " + '[' + marsChallenger.position[0] + ", " + marsChallenger.position[1] + ']' + " and is facing " + marsChallenger.direction + " ." );
 }
+
+//==================Overcoming Obstacles==============
+function checkPosition(rover) {
+// check the position to see if it matches one of the Obstacles
+   if (rover.position[0] === alienContact[0] && rover.position[1] === alienContact[1]) {
+     console.log("Hi Alien, I come in peace");
+   } else if (rover.position[0] === rockWall[0] && rover.position[1] === rockWall[1]) {
+     console.log("Houston, There's a rock wall ahead. Turn me round and round");
+   } else if (rover.position[0] === alienNest[0] && rover.position[1] === alienNest[1]) {
+     console.log("Houston, I've just crashed an alien party. I might be here a while!");
+   } else if (rover.position[0] === cliff[0] && rover.position[1] === cliff[1]) {
+     console.log("Houston, turn around there's a cliff just in front of me!");
+   }
+ }
+ checkPosition(marsChallenger);
 
 //=================Creating Borders and Overlapping the Rover========
 function overLapMap(rover) {
@@ -47,8 +62,6 @@ function overLapMap(rover) {
             overLapY = 10;
   }
 }
-
-//==================Overcoming Obstacles==============
 
 //===================Starter code - Moving Forward====================
 function goForward(rover) {
@@ -139,15 +152,22 @@ function goMove(rover) {
           if (commands === 'F') {
             goForward(marsChallenger);
               overLapMap(marsChallenger);
+                checkPosition(marsChallenger);
             }  else if (commands  === 'B') {
                 goBackwards(marsChallenger);
                   overLapMap(marsChallenger);
+                    checkPosition(marsChallenger);
+
             }  else if (commands  === 'R') {
                 turnRight(marsChallenger);
                   overLapMap(marsChallenger);
+                  checkPosition(marsChallenger);
+
             }  else if (commands  === 'L'){
                 turnLeft(marsChallenger);
                   overLapMap(marsChallenger);
+                  checkPosition(marsChallenger);
+
             } else {
                 alert("Houston, one of your requests is not supported. I will apply all supported commands");
             }
