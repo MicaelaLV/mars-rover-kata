@@ -1,3 +1,13 @@
+//===============Mars's Terrain Grid===========
+ /* ========Grid not implemented yet
+ var grid = [];
+ for (var x = 0; x <= 10; x++) {
+   grid[0] = x;
+ }
+ for (var y = 0; y <=10; y++) {
+   grid[1] = y;
+ }
+*/
 //===============Challenger Rover==================
 var marsChallenger = {
   position: [0, 0], //coordinates(x,y)
@@ -9,14 +19,7 @@ function roverPosition(rover) {
 }
 roverPosition(marsChallenger);
 
-//===============Mars's Terrain Grid===========
- var grid = [];
- for (var x = 0; x <= 10; x++) {
-   grid[0] = x;
- }
- for (var y = 0; y <=10; y++) {
-   grid[1] = y;
- }
+
 
 //=================Creating Borders and Overlapping the Rover========
 function overLapMap(rover) {
@@ -121,19 +124,25 @@ var userInput = prompt("Move Rover with F (Forward), B (Backward), R (Right), L 
 //Transform all the text inputted into uppercases
 var checkedText = userInput.toUpperCase();
 
+var commands = [];
+
+for (var i = 0; i < checkedText.length; i++) {
+  commands = checkedText[i];
+
+  console.log("Houston, I'll go " + commands + " ;");
 //Check for commands in the checked user input
-  if (checkedText === 'F') {
+  if (commands === 'F') {
         goForward(marsChallenger);
         overLapMap(marsChallenger);
-  }  else if (checkedText  === 'B') {
+  }  else if (commands  === 'B') {
         goBackwards(marsChallenger);
         overLapMap(marsChallenger);
-  }  else if (checkedText  === 'R') {
+  }  else if (commands  === 'R') {
         turnRight(marsChallenger);
         overLapMap(marsChallenger);
-  }  else if (checkedText  === 'L'){
+  }  else if (commands  === 'L'){
         turnLeft(marsChallenger);
         overLapMap(marsChallenger);
+ }
 }
-
 roverPosition(marsChallenger);
