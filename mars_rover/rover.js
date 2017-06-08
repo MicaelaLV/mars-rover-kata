@@ -1,18 +1,44 @@
-//==============Map Grid Here==================
-var grid = [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]];
-
-
-
 //===============Challenger Rover==================
 var marsChallenger = {
   position: [0, 0], //coordinates(x,y)
-  direction: "",
-  movementInput: '',
+  direction: 'N',
 };
 
+function roverPosition(rover) {
+  console.log("Mars Challenger is in position " + marsChallenger.position[0] + "," + marsChallenger.position[1] + " and is facing " + marsChallenger.direction + " ." );
+}
+roverPosition(marsChallenger);
 
-//==============Directioning the Rover===============
-function getDirection(rover) {
+//===============Mars's Terrain Grid===========
+ var grid = [];
+ for (var x = 0; x <= 10; x++) {
+   grid[0] = x;
+ }
+ for (var y = 0; y <=10; y++) {
+   grid[1] = y;
+ }
+
+//=================Creating Borders and Overlapping the Rover========
+function overLapMap(rover) {
+  //set X overlaps
+      var overLapX = marsChallenger.position[0];
+          if (overLapX >= 11) {
+            overLapX = 0;
+      } else if (overLapX <= -1) {
+            overLapX = 10;
+      }
+  //set Y overlaps
+  var overLapY = marsChallenger.position[1];
+    if (overLapY >= 11) {
+          overLapY = 0;
+    } else if (overLapY <= -1) {
+          overLapY = 10;
+    }
+}
+overLapMap(marsChallenger);
+
+//===================Starter code - Moving Forward====================
+function goForward(rover) {
   switch(rover.direction) {
     case 'N':
       rover.position[1]++;
@@ -26,54 +52,88 @@ function getDirection(rover) {
     case 'W':
       rover.position[0]--;
       break;
- }
-//print out the directioning in the console
-console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]");
-}
-//activate the function
-getDirection(marsChallenger);
-
-
-//===============Moving the Rover Around==============
-function goMove(rover) {
-  switch(rover.movementInput) {
-    case 'f':
-    rover.position[1]++;
-    break;
-    case 'b':
-    rover.position[1]--;
-    break;
-    case 'r':
-    rover.position[0]++;
-    break;
-    case 'l':
-    rover.position[0]--;
-    break;
   }
-//print out the new position of the Rover
-console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]");
 }
-//activate the function
-goMove(marsChallenger);
+goForward(marsChallenger);
 
-
-//=================Creating Borders and Overlapping the Rover========
-function overLapMap(rover) {
-//set Y overlaps
-  var overLapY = marsChallenger.position[1];
-    if (overLapY >= 10) {
-          overLapY = 0;
-    } else if (overLapY <= -1) {
-          overLapY = 9;
-    }
-//set X overlaps
-    var overLapX = marsChallenger.position[0];
-        if (overLapX >= 10) {
-          overLapX = 0;
-    } else if (overLapX <= -1) {
-          overLapX = 9;
-    }
-//print out the position after the overlap setting
-    console.log("New Rover Position: [" + overLapY + ", " + overLapX + "]");
+//================Moving Backwards=====================
+function goBackwards(rover) {
+  switch(rover.direction) {
+    case 'N':
+      rover.position[1]--;
+      break;
+    case 'E':
+      rover.position[0]--;
+      break;
+    case 'S':
+      rover.position[1]++;
+      break;
+    case 'W':
+      rover.position[0]++;
+      break;
+  }
 }
-overLapMap(marsChallenger);
+goBackwards(marsChallenger);
+
+//====================Turning Right=======================
+function turnRight(rover) {
+  switch(rover.direction) {
+    case 'N':
+      rover.direction ='E';
+      break;
+    case 'E':
+      rover.direction ='S';
+      break;
+    case 'S':
+      rover.direction ='W';
+      break;
+    case 'W':
+      rover.direction ='N';
+      break;
+  }
+}
+turnRight(marsChallenger);
+
+//====================Turning Left=======================
+function turnLeft(rover) {
+  switch(rover.direction) {
+    case 'N':
+      rover.direction='W';
+      break;
+    case 'W':
+      rover.direction='S';
+      break;
+    case 'S':
+      rover.direction='E';
+      break;
+    case 'E':
+      rover.direction='N';
+      break;
+  }
+}
+turnLeft(marsChallenger);
+
+//==============Assigning functions to Commands========
+
+//Ask the user for moving commands
+var userInput = prompt("Move Rover with F (Forward), B (Backward), R (Right), L (Left)");
+
+//Transform all the text inputted into uppercases
+var checkedText = userInput.toUpperCase();
+
+//Check for commands in the checked user input
+  if (checkedText === 'F') {
+        goForward(marsChallenger);
+        overLapMap(marsChallenger);
+  }  else if (checkedText  === 'B') {
+        goBackwards(marsChallenger);
+        overLapMap(marsChallenger);
+  }  else if (checkedText  === 'R') {
+        turnRight(marsChallenger);
+        overLapMap(marsChallenger);
+  }  else if (checkedText  === 'L'){
+        turnLeft(marsChallenger);
+        overLapMap(marsChallenger);
+}
+
+roverPosition(marsChallenger);
