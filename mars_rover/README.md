@@ -1,5 +1,9 @@
 # mars-rover-kata
-IronHack Javascript Exercise 
+
+![]https://gdb.voanews.com/185F0AD8-816A-44FC-8B6B-21A545A1650E_w1023_r1_s.jpg
+
+
+IronHack Javascript Exercise
 
 
 =======Basic Information=======
@@ -13,9 +17,9 @@ IronHack Javascript Exercise
 
 ==Iteration 1
 
-1) Create an object to represent the rover that has position and direction attributes 
-2) Create a grid using arrays (hint: do a google search for two-dimensional arrays). 
-3) Write functions for the various commands 
+1) Create an object to represent the rover that has position and direction attributes
+2) Create a grid using arrays (hint: do a google search for two-dimensional arrays).
+3) Write functions for the various commands
 4) Try to call some of those functions and display the new position of the rover.
 
 ==Iteration 2

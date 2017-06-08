@@ -43,7 +43,6 @@ function checkPosition(rover) {
      console.log("Houston, turn around there's a cliff just in front of me!");
    }
  }
- checkPosition(marsChallenger);
 
 //=================Creating Borders and Overlapping the Rover========
 function overLapMap(rover) {
