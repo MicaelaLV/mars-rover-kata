@@ -76,3 +76,7 @@ div #grid {
   background: url('img/mars_ground.jpg')center center;
   border: 10px solid #fff;
 }
+
+#rover {
+  margin: 50%;
+}

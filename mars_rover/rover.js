@@ -1,5 +1,5 @@
 //===========Rover Touch Down========
-//when document has loaded send out the landing message
+//when document has loaded send out the landing message to the control board
 $(document).ready (function (){
   document.getElementById("control-msg").innerHTML =("Challenger: has successfully landed on Mars Ground...");
 });
@@ -15,17 +15,18 @@ var marsChallenger = {
   position: [0, 0], //coordinates(x,y)
   direction: 'N',
 };
-//display position after 10 seconds
-window.setTimeout (starterPosition, 10000);
 
+//display position after 10 seconds
+window.setTimeout (starterPosition, 7000);
 function starterPosition() {
 document.getElementById("control-msg").innerHTML =("Challenger: is in position " + "[" + marsChallenger.position[0] + ", " + marsChallenger.position[1] + "]" + " and is facing " + marsChallenger.direction + " ." );
 }
 
 //================Communicating Rover Position===========
 function printPosition(rover) {
-  document.getElementById("challenger-msg").innerHTML =("Challenger is in position " + "[" + marsChallenger.position[0] + ", " + marsChallenger.position[1] + "]" + " and is facing " + marsChallenger.direction + " ." );
+  document.getElementById("challenger-msg").innerHTML = ("Challenger is in position " + "[" + marsChallenger.position[0] + ", " + marsChallenger.position[1] + "]" + " and is facing " + marsChallenger.direction + " ." );
 }
+  //console.log
 //================Mars Grid==================
 var grid = [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]];
 
@@ -36,18 +37,17 @@ var alienNest = [8, 9];
 var cliff = [3, 8];
 
 
-
 //==================Overcoming Obstacles==============
 function checkPosition(rover) {
 // check the position to see if it matches one of the Obstacles
    if (rover.position[0] === alienContact[0] && rover.position[1] === alienContact[1]) {
-     console.log("Hi Alien, I come in peace");
+    document.getElementById("challenger-msg").innerHTML = ("Houston, Alien creature lies ahead");
    } else if (rover.position[0] === rockWall[0] && rover.position[1] === rockWall[1]) {
-     console.log("Houston, There's a rock wall ahead. Turn me round and round");
+     document.getElementById("challenger-msg").innerHTML = ("Houston, There's a rock wall ahead. I suggest turning around");
    } else if (rover.position[0] === alienNest[0] && rover.position[1] === alienNest[1]) {
-     console.log("Houston, I've just crashed an alien party. I might be here a while!");
+     document.getElementById("challenger-msg").innerHTML = ("Houston, I'm at the door of an alien party. May I crush it?");
    } else if (rover.position[0] === cliff[0] && rover.position[1] === cliff[1]) {
-     console.log("Houston, turn around there's a cliff just in front of me!");
+     document.getElementById("challenger-msg").innerHTML = ("Houston, turn around there's a cliff just in front of me!");
    }
  }
 
@@ -142,11 +142,15 @@ function turnLeft(rover) {
 }
 
 //==============Assigning functions to Commands========
-window.setTimeout (goMove, 20000);
+window.setTimeout (moveChallenger, 10000);
+
+function moveChallenger() {
+  document.getElementById("control-msg").innerHTML = ("Houston, Move Challenger with F (Forward), B (Backward), R (Right), L (Left)");
+}
 
 //Ask the user for moving commands
 function goMove(rover) {
-  document.getElementById("control-msg").innerHTML = ("Houston, Move Challenger with F (Forward), B (Backward), R (Right), L (Left)");
+  //document.getElementById("control-msg").innerHTML = ("Houston, Move Challenger with F (Forward), B (Backward), R (Right), L (Left)");
       var userInput = document.getElementById("commandInput").value;
       //Transform all the text inputted into uppercases
         var checkedText = userInput.toUpperCase();
@@ -156,6 +160,7 @@ function goMove(rover) {
                 commands = checkedText[i];
                   //document.getElementById("challenger-msg").innerHTML =
                   console.log("Houston, going " + commands + " ;");
+
     //Check for commands in the checked user input
           if (commands === 'F') {
             goForward(marsChallenger);
@@ -180,7 +185,7 @@ function goMove(rover) {
                 document.getElementById("challenger-msg").innerHTML = ("Houston, one of your requests is not supported. I will apply all supported commands");
             }
           }
+          printPosition(marsChallenger);
 }
-
 goMove(marsChallenger);
 printPosition(marsChallenger);
