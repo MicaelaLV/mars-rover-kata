@@ -1,22 +1,30 @@
 //===========Rover Touch Down========
+//when document has loaded send out the landing message
 $(document).ready (function (){
   document.getElementById("control-msg").innerHTML =("Challenger: has successfully landed on Mars Ground...");
 });
-//wait 5 seconds before displaying the message
+
+//wait 5 seconds before displaying the message communicating the rover's position
 window.setTimeout (retrievingPosition, 5000);
   function retrievingPosition (){
-    document.getElementById("control-msg").innerHTML =("Challenger: communicating position...");
+    document.getElementById("control-msg").innerHTML =("Houston, retrieving Challenger position...");
   }
+
 //===============Challenger Rover==================
 var marsChallenger = {
   position: [0, 0], //coordinates(x,y)
   direction: 'N',
 };
-
+//display position after 10 seconds
 window.setTimeout (starterPosition, 10000);
 
 function starterPosition() {
-document.getElementById("control-msg").innerHTML =("Challenger: is in position " + marsChallenger.position[0] + ", " + marsChallenger.position[1] + " and is facing " + marsChallenger.direction + " ." );
+document.getElementById("control-msg").innerHTML =("Challenger: is in position " + "[" + marsChallenger.position[0] + ", " + marsChallenger.position[1] + "]" + " and is facing " + marsChallenger.direction + " ." );
+}
+
+//================Communicating Rover Position===========
+function printPosition(rover) {
+  document.getElementById("challenger-msg").innerHTML =("Challenger is in position " + "[" + marsChallenger.position[0] + ", " + marsChallenger.position[1] + "]" + " and is facing " + marsChallenger.direction + " ." );
 }
 //================Mars Grid==================
 var grid = [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]];
@@ -27,10 +35,7 @@ var rockWall = [5, 5];
 var alienNest = [8, 9];
 var cliff = [3, 8];
 
-//================Communicating Rover Position===========
-function printPosition(rover) {
-  document.getElementById("control-msg").innerHTML =("Mars Challenger is in position " + '[' + marsChallenger.position[0] + ", " + marsChallenger.position[1] + ']' + " and is facing " + marsChallenger.direction + " ." );
-}
+
 
 //==================Overcoming Obstacles==============
 function checkPosition(rover) {
@@ -81,7 +86,6 @@ function goForward(rover) {
       break;
 }
 }
-
 
 //================Moving Backwards=====================
 function goBackwards(rover) {
@@ -138,18 +142,19 @@ function turnLeft(rover) {
 }
 
 //==============Assigning functions to Commands========
-//window.setInterval(goMove, 10000);
+window.setTimeout (goMove, 20000);
 
+//Ask the user for moving commands
 function goMove(rover) {
-  //Ask the user for moving commands
-    confirm("Houston, request Challenger to move?");
-      var userInput = prompt("Move Challenger with F (Forward), B (Backward), R (Right), L (Left)");
+  document.getElementById("control-msg").innerHTML = ("Houston, Move Challenger with F (Forward), B (Backward), R (Right), L (Left)");
+      var userInput = document.getElementById("commandInput").value;
       //Transform all the text inputted into uppercases
         var checkedText = userInput.toUpperCase();
       //Check all text inputted for movement commands
           var commands = [];
             for (var i = 0; i < checkedText.length; i++) {
                 commands = checkedText[i];
+                  //document.getElementById("challenger-msg").innerHTML =
                   console.log("Houston, going " + commands + " ;");
     //Check for commands in the checked user input
           if (commands === 'F') {
@@ -172,9 +177,10 @@ function goMove(rover) {
                   checkPosition(marsChallenger);
 
             } else {
-                alert("Houston, one of your requests is not supported. I will apply all supported commands");
+                document.getElementById("challenger-msg").innerHTML = ("Houston, one of your requests is not supported. I will apply all supported commands");
             }
           }
 }
+
 goMove(marsChallenger);
 printPosition(marsChallenger);

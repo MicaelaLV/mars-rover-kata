@@ -20,15 +20,54 @@ div #title {
   text-align: center;
  }
 
-div #control-msg {
+ div #control-msg {
+   font-family: 'Titillium Web', sans-serif;
+   height: 40px;
+   background-color: #000;
+   font-size: 20px;
+   text-align: center;
+   color: #CD1515;
+   margin: 10px 0px;
+   padding-top: 5px;
+ }
+
+div #control-input {
+  font-family: 'Dosis', sans-serif;
+  height: 50px;
+  background-color: #0F6FCF;
+  font-size: 20px;
+  text-align: center;
+  color: #F2F2F2;
+  margin: 10px 0px;
+  padding: 8px 5px;
+}
+
+#commandInput {
+  color: #000;
+}
+
+.button {
+    background-color: #CD1515;
+    border: none;
+    color: white;
+    padding: 8px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+div #challenger-msg {
   font-family: 'Titillium Web', sans-serif;
   height: 40px;
   background-color: #000;
   font-size: 20px;
   text-align: center;
-  color: #CD1515;
+  color: #F2F2F2;
   margin: 10px 0px;
   padding-top: 5px;
+  text-transform: uppercase;
 }
 
 div #grid {
