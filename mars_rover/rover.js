@@ -1,24 +1,26 @@
 //===========Rover Touch Down========
-console.log("Houston, Challenger has successfully landed on Mars Ground, ready for commands");
-
-console.log("Communicating Position ...");
-
-
+$(document).ready (function (){
+  document.getElementById("control-msg").innerHTML =("Challenger: has successfully landed on Mars Ground...");
+});
+//wait 5 seconds before displaying the message
+window.setTimeout (retrievingPosition, 5000);
+  function retrievingPosition (){
+    document.getElementById("control-msg").innerHTML =("Challenger: communicating position...");
+  }
 //===============Challenger Rover==================
 var marsChallenger = {
   position: [0, 0], //coordinates(x,y)
   direction: 'N',
 };
-console.log("Challenger is in position " + marsChallenger.position[0] + ", " + marsChallenger.position[1] + " and is facing " + marsChallenger.direction + " ." );
 
-//================Mars Grid==================
-var grid = new Array(10);
-for (var x = 0; x <= 10; x++) {
-  grid[x] = new Array(10);
-  for (var y = 0; y <= 10; y++) {
-    grid[x][y] = '[' + x + ', ' + y + ']';
-  }
+window.setTimeout (starterPosition, 10000);
+
+function starterPosition() {
+document.getElementById("control-msg").innerHTML =("Challenger: is in position " + marsChallenger.position[0] + ", " + marsChallenger.position[1] + " and is facing " + marsChallenger.direction + " ." );
 }
+//================Mars Grid==================
+var grid = [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]];
+
 //=============Obstacles================
 var alienContact = [1, 3];
 var rockWall = [5, 5];
@@ -27,7 +29,7 @@ var cliff = [3, 8];
 
 //================Communicating Rover Position===========
 function printPosition(rover) {
-  console.log("Mars Challenger is in position " + '[' + marsChallenger.position[0] + ", " + marsChallenger.position[1] + ']' + " and is facing " + marsChallenger.direction + " ." );
+  document.getElementById("control-msg").innerHTML =("Mars Challenger is in position " + '[' + marsChallenger.position[0] + ", " + marsChallenger.position[1] + ']' + " and is facing " + marsChallenger.direction + " ." );
 }
 
 //==================Overcoming Obstacles==============
@@ -136,6 +138,8 @@ function turnLeft(rover) {
 }
 
 //==============Assigning functions to Commands========
+//window.setInterval(goMove, 10000);
+
 function goMove(rover) {
   //Ask the user for moving commands
     confirm("Houston, request Challenger to move?");

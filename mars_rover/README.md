@@ -1,7 +1,6 @@
 # mars-rover-kata
 
-![]https://gdb.voanews.com/185F0AD8-816A-44FC-8B6B-21A545A1650E_w1023_r1_s.jpg
-
+![alt text] (https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/NASA_Mars_Rover.jpg/1200px-NASA_Mars_Rover.jpg)
 
 IronHack Javascript Exercise
 

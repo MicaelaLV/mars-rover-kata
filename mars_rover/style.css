@@ -1,17 +1,39 @@
-@font-face {
-  font-family: 'glass';
-  src: url(fonts/glass.ttf);
-}
-
 body {
-  background: url(img/mars_ground.jpg)no-repeat center;
-  background-color: #000;
+  background: url('https://i.ytimg.com/vi/voWpbz1De_M/maxresdefault.jpg')repeat center;
+  background-size: cover;
 }
 
-h1 {
-  font-family: 'glass', sans-serif;
-  color: #975542;
-  font-size: 72px;
+.main {
+  background: url('http://wallpapercave.com/wp/gScmGae.png')no-repeat center;
+  background-size: cover;
+  height: 650px;
+}
+
+div #title {
+  font-family: 'Dosis', sans-serif;
+  height: 90px;
+  background-color: white;
+  font-size: 60px;
+  color: black;
+  margin: 0 0;
+  padding-top: 2px;
   text-align: center;
-  margin-top: 50px;
+ }
+
+div #control-msg {
+  font-family: 'Titillium Web', sans-serif;
+  height: 40px;
+  background-color: #000;
+  font-size: 20px;
+  text-align: center;
+  color: #CD1515;
+  margin: 10px 0px;
+  padding-top: 5px;
+}
+
+div #grid {
+  height: 80%;
+  width: 100%;
+  background: url('img/mars_ground.jpg')center center;
+  border: 10px solid #fff;
 }
